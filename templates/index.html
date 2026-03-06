@@ -1,54 +1,328 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FRONTEND</title>
-  <link rel="stylesheet" href="C:\Users\karis\OneDrive\Desktop\HYPERTENSION PREDICTION\static\style.css">
-  <style>
-    /* Medical professional css variable */
-    :root{
-      --primary-medical :#0052CC;
-      --secondary-medical:#E8F4FD;
-      --success-medical:#10B981;
-      --warning-medical:#F59E0B;
-      --danger-medical:#EF4444;
-      --info-medical:#3B82F6;
-      --neutral-gray:#64748B;
-      --light-bg:#F8FAFC;
-      --white:#FFFFFF;
-      --shadow-sm:0 1px 2px 0 rgba(0,0,0,0.05);
-      --shadow-nd:0 4px 6px -1px rgba(0,0,0,0.1);
-      --shadow-lg:0 10px 15px -3px rgba(0,0,0,0.1);
-      --shadow-xl:0 20px 25px -5 rgba(0,0,0,0.1);
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hypertension Detection UI</title>
+    <link href="https://fonts.googleapis.com" rel="stylesheet" />
+    <style>
+      :root {
+        --primary-medical: #0052cc;
+        --secondary-medical: #e8f4fd;
+        --success-medical: #10b981;
+        --warning-medical: #f59e0b;
+        --danger-medical: #ef4444;
+        --info-medical: #3b82f6;
+        --neutral-gray: #64748b;
+        --light-bg: #f8fafc;
+        --white: #ffffff;
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
 
-    *{
-      margin: 0;
-      padding: 0;
-      box-sizing:border-box;
-    }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    body{
-      font-family: 'Inter',sans-serif;
-      background: linear-gradient(135deg,#667EEA 0%,#764BA2 100%);
-      min-height: 100vh;
-      line-height: 1.6;
-      color: #1E293B;
-    }
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        padding: 2rem 1rem;
+      }
 
-    /* Professional medical Header */
-    .medical-header{
-      background: linear-gradient(135deg, var(--primary-medical) 0%,#1E40AF 100%);
-      color: white;
-      padding: 1.5rem 0;
-      box-shadow: var(--shadow-lg);
-      position: relative;
-      overflow: hidden;
-    }
-  </style>
-</head>
-<body>
-  
-</body>
+      .container {
+        background: white;
+        width: 100%;
+        max-width: 1100px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+      }
+
+      /* Header */
+      .medical-header {
+        background: linear-gradient(
+          135deg,
+          var(--primary-medical) 0%,
+          #1e40af 100%
+        );
+        color: white;
+        padding: 2rem;
+        text-align: left;
+      }
+
+      .header-content h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+      }
+      .badge-container {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .badge {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+      }
+
+      /* Main Layout */
+      .main-layout {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+        padding: 2rem;
+      }
+
+      /* Form Section */
+      .form-section h2 {
+        color: var(--primary-medical);
+        margin-bottom: 1.5rem;
+        border-left: 4px solid var(--primary-medical);
+        padding-left: 10px;
+      }
+      .input-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      label {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: #334155;
+      }
+      select,
+      input {
+        padding: 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        background: #f1f5f9;
+        width: 100%;
+      }
+
+      .btn-submit {
+        grid-column: span 2;
+        background: var(--primary-medical);
+        color: white;
+        padding: 15px;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 1rem;
+        text-transform: uppercase;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .card {
+        background: var(--secondary-medical);
+        padding: 1.5rem;
+        border-radius: 10px;
+        border: 1px solid #bfdbfe;
+      }
+      .card h3 {
+        color: var(--primary-medical);
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+      }
+      .card ul {
+        list-style: none;
+        font-size: 0.85rem;
+        color: #475569;
+      }
+      .card li {
+        margin-bottom: 8px;
+        position: relative;
+        padding-left: 15px;
+      }
+      .card li::before {
+        content: "•";
+        color: var(--primary-medical);
+        position: absolute;
+        left: 0;
+      }
+
+      /* BP Guidelines Table */
+      .bp-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.8rem;
+        margin-top: 10px;
+      }
+      .bp-table td {
+        padding: 8px;
+        border-bottom: 1px solid #dee2e6;
+      }
+      .bp-table tr:last-child td {
+        border: none;
+      }
+
+      @media (max-width: 768px) {
+        .main-layout {
+          grid-template-columns: 1fr;
+        }
+        .input-grid {
+          grid-template-columns: 1fr;
+        }
+        .btn-submit {
+          grid-column: span 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="medical-header">
+        <div class="header-content">
+          <h1>Hypertension Detection</h1>
+          <p>Advanced AI-Powered Cardiovascular Risk Assessment Platform</p>
+          <div class="badge-container">
+            <span class="badge">🛡️ Medical Grade</span>
+            <span class="badge">🤖 AI-Powered</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="main-layout">
+        <section class="form-section">
+          <h2>Comprehensive Health Assessment</h2>
+          <form class="input-grid">
+            <!-- Row 1 -->
+            <div class="input-group">
+              <label>Gender</label>
+              <select>
+                <option>Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label>Age Group</label>
+              <select>
+                <option>Select Age Range</option>
+                <option>18-34 years</option>
+                <option>35-50 years</option>
+                <option>51-64 years</option>
+                <option>65+ years</option>
+              </select>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="input-group">
+              <label>Family History of Hypertension</label>
+              <select>
+                <option>Select Option</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label>Currently Under Medical Care</label>
+              <select>
+                <option>Select Option</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="input-group">
+              <label>Currently Taking BP Medication</label>
+              <select>
+                <option>Select Option</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label>Symptom Severity</label>
+              <select>
+                <option>Select Severity</option>
+                <option>Mild</option>
+                <option>Moderate</option>
+                <option>Severe</option>
+              </select>
+            </div>
+
+            <!-- Row 4 -->
+            <div class="input-group">
+              <label>Systolic Pressure</label>
+              <select>
+                <option>Select Range</option>
+                <option>100-110 mmHg</option>
+                <option>121-130 mmHg</option>
+                <option>140+ mmHg</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label>Diastolic Pressure</label>
+              <select>
+                <option>Select Range</option>
+                <option>70-80 mmHg</option>
+                <option>91-100 mmHg</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn-submit">
+              Generate Risk Assessment
+            </button>
+          </form>
+        </section>
+
+        <aside class="sidebar">
+          <div class="card">
+            <h3>ℹ️ About This System</h3>
+            <ul>
+              <li>Evidence-based risk assessment</li>
+              <li>Clinical guideline compliance</li>
+              <li>Personalized recommendations</li>
+              <li>Professional medical support</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>💙 Blood Pressure Guidelines</h3>
+            <table class="bp-table">
+              <tr>
+                <td>Normal:</td>
+                <td>&lt;120/80</td>
+              </tr>
+              <tr>
+                <td>Elevated:</td>
+                <td>120-129/&lt;80</td>
+              </tr>
+              <tr>
+                <td>Stage 1:</td>
+                <td>130-139/80-89</td>
+              </tr>
+              <tr>
+                <td>Stage 2:</td>
+                <td>&ge;140/&ge;90</td>
+              </tr>
+              <tr>
+                <td>Crisis:</td>
+                <td>&gt;180/&gt;120</td>
+              </tr>
+            </table>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </body>
 </html>
